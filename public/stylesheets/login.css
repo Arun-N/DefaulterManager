@@ -1,0 +1,198 @@
+             @font-face {
+                font-family: title;
+                src: url("../fonts/juli.ttf");
+            }
+            
+            * {
+                margin: 0;
+                padding:0;
+            }
+            
+            html,body {
+                width: 100%;
+                height: 100%;
+            }
+            
+            .container {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background: #928DAB; /* For browsers that do not support gradients */    
+                background: -webkit-linear-gradient(left top, #928DAB, #1F1C2C); /* For Safari 5.1 to 6.0 */
+                background: -o-linear-gradient(bottom right, #928DAB, #1F1C2C); /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(bottom right, #928DAB, #1F1C2C); /* For Firefox 3.6 to 15 */
+                background: linear-gradient(to bottom right, #928DAB, #1F1C2C); /* Standard syntax (must be last) */
+            }
+            
+            nav {
+                width: 100%;
+                height: 10%;
+                background-color: #15131d;
+            }
+            
+            header {
+                width: 70%;
+                height: 10%;
+                text-align: center;
+                line-height: 2;
+                font-size: 30px;
+                font-family: sans-serif;
+                font-weight: 600;
+                margin: 0 auto;
+                padding: 1em 2em;
+                letter-spacing: 2px;
+            }
+            
+            .logintext {
+                text-align: center;
+                width: 30%;
+                height: 8%;
+                padding: 0em 1em;
+                margin: 0 auto;
+                font-family: title;
+                font-size: 24px;
+                font-weight: 700;
+            }
+            
+            form {
+                position: relative;
+                width: 60%;
+                height: auto;
+                margin: 0 auto;
+                padding: 1em 2em;
+                text-align: center;
+            }
+            
+            input[type="text"] {
+                width: 35%;
+                height: 15%;
+                padding: 1.2em 1.5em;
+                margin-bottom: 2%;
+                background: #1F1C2C;
+                border: none;
+                color: white;
+                box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.4);
+                position: relative;
+                left: 0;
+                animation: slide1 0.8s ease;
+            }
+
+            input[type="text"]:focus {
+                outline: none;
+            }
+
+            .fa-user{
+                position: absolute;
+                top: 10%;
+                left: 65%;
+                font-size: 18px;
+                animation: fa-fade 2.5s ease-in-out;
+            }
+            
+            input[type="password"] {
+                width: 35%;
+                height: 15%;
+                padding: 1.2em 1.5em;
+                margin-bottom: 1%;
+                border: none;
+                background: #1F1C2C;
+                color: white;
+                box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.4);
+                position: relative;
+                left: 0;
+                animation: slide1 1s ease;
+            }
+
+            input[type="password"]:focus {
+               outline: none;
+            }
+            
+            .fa-lock {
+                position: absolute;
+                top: 33%;
+                left: 65%;
+                font-size: 18px;
+                animation: fa-fade 2.5s ease-in-out;
+            }
+        
+            input[type="submit"] {
+                width: 40%;
+                height: 15%;
+                padding: 1.3em 0em;
+                background-color: black;
+                color: #626060;
+                font-size: 15px;
+                font-weight: 100;
+                border: none;
+                box-shadow: -6px 7px 8px rgba(0,0,0,0.6);
+                transition: all 0.4s ease;
+                position: relative;
+                animation: slide1 1.2s ease;
+            }
+        
+            input[type="submit"]:hover {
+                cursor: pointer;
+                box-shadow: 10px 12px 15px rgba(0,0,0,0.6);
+                color: #dddddd;
+            }
+            
+            
+            input[type="submit"]:focus {
+                outline: none;
+            }
+            
+            #regLink {
+                font-size: 17px;
+                font-weight: 500;
+            }
+            
+            #regLink a {
+                color: #959191;
+                text-align: center;
+            }
+            
+            footer {
+                width: 100%;
+                background: #15131d;
+            }
+            
+            #copyright {
+                width: 90%;
+                padding: 0.3em 0;
+                margin: 0 auto;
+                position: relative;
+                bottom: 0;
+                color: #696565;
+            }
+            
+            @keyframes slide1 {
+                0% {
+                    
+                    left: 100%;
+                }
+                
+                100% {
+                    
+                    left: 0%;
+                }
+            }
+            /*
+            @keyframes slide2 {
+                0% {
+                    right: 100%;
+                }
+                
+                100% {
+                    right: 0%;
+                }
+            }
+            */
+            @keyframes fa-fade {
+                0% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }

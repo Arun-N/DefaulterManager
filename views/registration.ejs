@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../public/stylesheets/reg.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+    </head>
+    <body>
+        <div class = "container">
+            <nav></nav>
+            <header>DEFAULTER MANAGEMENT</header>
+            <div class = "signuptext">Sign Up</div>
+            <form ng-app="" name="myForm" autocomplete="off" on-submit="myForm.$valid" action="successReg.html">
+                <input type="text" class="nameClass" id="nameID" name="name" ng-model="name" ng-pattern="/^[a-zA-Z\s]*$/" placeholder="Enter your name" required>
+                <span style="color:red" ng-show="myForm.name.$error.pattern">Invalid!  (numbers, special characters not allowed)</span>
+                <br>
+                <input type="text" id="uniqueID" name="UID" ng-model="UID" placeholder="Enter your UID" required>
+                <!--<span style="color:red" ng-show="myForm.UID.$touched && myForm.UID.$invalid">*Required.</span>-->
+                <br>
+                <input type="number" id="semID" name="semester" ng-model="semester" placeholder="Enter semester(1-8)" min="1" max="8" integer required>
+                <span style="color:red" ng-show="myForm.semester.$error.min || myForm.semester.$error.max"> Value must be in range of (1-8)</span>
+                <span style="color:red" ng-show="myForm.semester.$error.number"> Invalid value</span>
+
+                <!--<span style="color:red" ng-show="myForm.semester.$touched && myForm.semester.$invalid">*Required</span>-->
+                <br>
+                <input type="email" id="emailID" name="em" ng-model="em" placeholder= "Enter email address" ng-pattern = '/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i'
+                required>
+                <!--<span style="color:red" ng-show="myForm.em.$touched && myForm.em.$invalid">*Required</span>
+                <span ng-show="myForm.em.$"></span>-->      
+                <span style="color:red" ng-show="myForm.em.$error.pattern">Not a valid E-mail address</span>
+                <br>
+                <input type="password" class="passwdClass" id="passwd" name="password" ng-model="password" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                <br><br>
+                <button type="submit" id="submit-btn">Create an account</button>
+                <br><br><br>
+                <p id="loginLink">Already have an Account?  <a href="login.ejs">Log In</a></p>
+            </form>
+        </div>
+        <footer>
+                <p id="copyright">&copy;2017</p>
+        </footer>
+    </body>
+</html>

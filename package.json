@@ -11,8 +11,11 @@
     "debug": "~2.2.0",
     "ejs": "~2.5.2",
     "express": "~4.14.0",
+    "mime": "latest",
     "morgan": "~1.7.0",
+    "mysql": "^2.13.0",
+    "node-msoffice-pdf": "latest",
     "serve-favicon": "~2.3.0",
-    "mime": "latest"
+    "busboy": "latest"
   }
 }

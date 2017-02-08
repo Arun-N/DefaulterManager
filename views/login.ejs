@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    </head>
+    <body>
+        <div class="container">
+            <nav></nav>
+            <header>DEFAULTER MANAGEMENT</header>
+            <div class="logintext">LogIn</div>
+            <form name="loginForm" action="#">
+                <input type="text" id="nmID" name="LoginName" placeholder="Enter Name" required>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <br>
+                <input type="password" id="passwdID" class="pwd" name="LoginPassword" placeholder="Enter Password" required>
+                <i class="fa fa-lock" aria-hidden="true"></i>
+                <br><br>
+                <input type="submit" value="Log In">
+                <br><br><br>
+                <p id="regLink">Don't have an account? <a href="registration.ejs">Sign Up</a></p>
+            </form>
+        </div>
+        <footer>
+            <p id="copyright">&copy;2017</p>    
+        </footer>
+        
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#nmID').focusin(function () {
+                    $('.fa-user').css({
+                        'color':'#eeeeee'
+                    });
+                }); 
+                
+                $('#nmID').focusout(function () {
+                    $('.fa-user').css({
+                        'color':'#000000'
+                    });
+                });
+                
+                $('#passwdID').focusin(function (){
+                  $('.fa-lock').css({
+                      'color' : '#eeeeee'
+                  });
+               });
+
+                $('#passwdID').focusout(function (){
+                  $('.fa-lock').css({
+                      'color' : '#000000'
+                  });
+               });
+            });
+        </script>
+    </body>
+</html>

@@ -9,7 +9,7 @@
             <nav></nav>
             <header>DEFAULTER MANAGEMENT</header>
             <div class="logintext">LogIn</div>
-            <form name="loginForm" action="#">
+            <form name="loginForm" method="post" action="/validate">
                 <input type="text" id="nmID" name="LoginName" placeholder="Enter Name" required>
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <br>
@@ -18,7 +18,7 @@
                 <br><br>
                 <input type="submit" value="Log In">
                 <br><br><br>
-                <p id="regLink">Don't have an account? <a href="registration.ejs">Sign Up</a></p>
+                <p id="regLink">Don't have an account? <a href="registration">Sign Up</a></p>
             </form>
         </div>
         <footer>

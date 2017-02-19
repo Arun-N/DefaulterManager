@@ -13,7 +13,7 @@
         <nav class="nav">
             <ul>
                 <li>Welcome, (name of the class advisor)</li>
-                <li class="logout"><a href="#">Logout</a></li>
+                <li class="logout"><a href="homepage/logout">Logout</a></li>
             </ul>
         </nav>
         <div class="container">
@@ -32,7 +32,7 @@
         </div>
         <script type="text/javascript">
             $("#download").click(function () {
-                window.open('/homepage/download');
+                window.open('/homepage/download', "_self");
                 /*$.ajax({
                     method: 'GET',
                     url: '/homepage/download',          /////NOT NEEDED! WILL CAUSE UNWANTED RESULTS IF USED!!/////

@@ -16,4 +16,8 @@ router.get('/download', function(req, res){
     //res.end();   automatically called by res.download()
 });
 
+router.get('/logout', function (req, res) {
+    res.redirect('/');
+});
+
 module.exports = router;

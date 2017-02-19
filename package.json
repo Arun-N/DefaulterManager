@@ -7,15 +7,20 @@
   },
   "dependencies": {
     "body-parser": "~1.15.2",
+    "busboy": "latest",
+    "connect-busboy": "0.0.2",
+    "connect-mongo": "^1.3.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "ejs": "~2.5.2",
     "express": "~4.14.0",
+    "express-fileupload": "0.0.7",
+    "express-session": "^1.15.0",
     "mime": "latest",
+    "mongo-connect": "0.0.6",
     "morgan": "~1.7.0",
     "mysql": "^2.13.0",
     "node-msoffice-pdf": "latest",
-    "serve-favicon": "~2.3.0",
-    "busboy": "latest"
+    "serve-favicon": "~2.3.0"
   }
 }

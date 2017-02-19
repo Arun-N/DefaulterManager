@@ -1,15 +1,38 @@
 var express = require('express');
+var app = express();
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var mysql = require('mysql');
+
+/*mysql.query('insert into '+ TABLE +' (username, uid, sem, email, password) values ("Arun", 9989, 6, "appuarunnair@gmail.com", "abcd32323hf")',
+    function selectCb(err) {
+        if (err) throw err;
+        else console.log("Success");
+    });*/
+
+var con = mysql.createConnection({
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: '',
+    database: 'defaulterm'
+});
+
+con.connect(function (err) {
+    if(err)
+        console.log("Database Connection Failed");
+    else console.log("Connection successful");
+});
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var main = require('./routes/mainpage');
-
-var app = express();
+var upload = require('./routes/upload');
+var sreg = require('./routes/register');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,32 +42,21 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req,res,next){
+    req.con = con;
+    next();
+});
 
 app.use('/', index);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', users);
 app.use('/homepage', main);
-
-
-/*app.use(function (req,res,next) {
-
-    var mysql      = require('mysql');
-    var connection = mysql.createConnection({
-        host     : 'localhost',
-        user     : 'root',
-        password : '',
-        database : 'defaulterm'
-    });
-
-    connection.connect();
-    req.connection = connection;
-});*/
-
-
-
+app.use('/upload', upload);
+app.use('/registration', sreg);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -52,8 +64,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-
 
 // error handler
 app.use(function(err, req, res) { //'next' was removed from the parameters

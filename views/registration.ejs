@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="../public/stylesheets/reg.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/reg.css">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
     </head>
     <body>
@@ -9,7 +9,7 @@
             <nav></nav>
             <header>DEFAULTER MANAGEMENT</header>
             <div class = "signuptext">Sign Up</div>
-            <form ng-app="" name="myForm" autocomplete="off" on-submit="myForm.$valid" action="successReg.html">
+            <form ng-app="" name="myForm" autocomplete="off" on-submit="myForm.$valid" method="post" action="/registration/success">
                 <input type="text" class="nameClass" id="nameID" name="name" ng-model="name" ng-pattern="/^[a-zA-Z\s]*$/" placeholder="Enter your name" required>
                 <span style="color:red" ng-show="myForm.name.$error.pattern">Invalid!  (numbers, special characters not allowed)</span>
                 <br>
@@ -32,7 +32,7 @@
                 <br><br>
                 <button type="submit" id="submit-btn">Create an account</button>
                 <br><br><br>
-                <p id="loginLink">Already have an Account?  <a href="login.ejs">Log In</a></p>
+                <p id="loginLink">Already have an Account?  <a href="/">Log In</a></p>
             </form>
         </div>
         <footer>

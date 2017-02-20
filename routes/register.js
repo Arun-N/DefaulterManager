@@ -25,9 +25,25 @@ app.get('/', function (req, res) {
     res.render('registration');
 });
 
-/*app.get('/successpage', function (req, res) {
-    res.render('successReg');
-});*/
+app.get('/check', function (req, res) {
+    var db = req.con;
+    var q = req.query.q;
+
+    //console.log(q);
+
+    db.query("SELECT uid FROM users WHERE username='" + q + "'", function (err, rows) {
+        if(rows[0] != undefined){
+            console.log("warning");
+            res.writeHead(200, {"Content-Type" : "text/plain"});
+            res.end("warning")
+        }
+        else {
+            console.log("ok");
+            res.writeHead(200, {"Content-Type" : "text/plain"});
+            res.end("ok");
+        }
+    });
+});
 
 app.post('/success', function (req, res) {
     var db = req.con;

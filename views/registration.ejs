@@ -2,6 +2,10 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/stylesheets/reg.css">
+        <!--<script
+                src="https://code.jquery.com/jquery-3.1.1.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+                crossorigin="anonymous"></script>-->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
     </head>
     <body>
@@ -10,7 +14,8 @@
             <header>DEFAULTER MANAGEMENT</header>
             <div class = "signuptext">Sign Up</div>
             <form ng-app="" name="myForm" autocomplete="off" on-submit="myForm.$valid" method="post" action="/registration/success">
-                <input type="text" class="nameClass" id="nameID" name="name" ng-model="name" ng-pattern="/^[a-zA-Z\s]*$/" placeholder="Enter your name" required>
+
+                <input type="text" class="nameClass" id="nameID" name="name" ng-model="name" ng-pattern="/^[a-zA-Z\s]*$/" placeholder="Enter your name" onblur="showUser(this.value)" required>
                 <span style="color:red" ng-show="myForm.name.$error.pattern">Invalid!  (numbers, special characters not allowed)</span>
                 <br>
                 <input type="text" id="uniqueID" name="UID" ng-model="UID" placeholder="Enter your UID" required>
@@ -33,10 +38,42 @@
                 <button type="submit" id="submit-btn">Create an account</button>
                 <br><br><br>
                 <p id="loginLink">Already have an Account?  <a href="/">Log In</a></p>
+
             </form>
         </div>
         <footer>
                 <p id="copyright">&copy;2017</p>
         </footer>
+        <script type="text/javascript">
+
+            function showUser(str) {
+                var xmlhttp;
+                if (str == "") {
+                    //document.getElementById("textHint").innerHTML = "";
+                    return;
+                } else {
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else {
+                        // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            if(this.responseText == "warning"){
+                                document.getElementById("nameID").value = "";
+                                document.getElementById("nameID").placeholder = "Username already taken";
+                            }
+                            else if(this.responseText == "ok"){
+                                document.getElementById("nameID").placeholder = "Enter your name";
+                            }
+                        }
+                    };
+                    xmlhttp.open("GET","registration/check?q="+str,true);
+                    xmlhttp.send();
+                }
+            }
+        </script>
     </body>
 </html>

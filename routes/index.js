@@ -25,10 +25,11 @@ app.post('/validate', function (req, res) {
     db.query("SELECT password FROM users WHERE username='" + uname + "'", function (err, rows) {
         if(err){console.log(err)}
         else {
-            console.log(rows[0]);
+            //console.log(rows[0]);
             if(rows[0] == undefined){
-                console.log("Incorrect user name or password!");
-                //window.alert("Incorrect user name or password!");
+                console.log("Incorrect user name!");
+                //res.writeHead(200, {"Content-Type":"text/plain"});
+                //res.end("wrong_username");
                 res.redirect('/');
             }
             else {
@@ -36,6 +37,12 @@ app.post('/validate', function (req, res) {
                 if(pwdH == pwdH2){
                     console.log("Correct");
                     res.redirect('homepage');
+                }
+                else {
+                    console.log("password incorrect");
+                    res.redirect('/');
+                    //res.writeHead(200, {"Content-Type":"text/plain"});
+                    //res.end("wrong_password");
                 }
             }
         }

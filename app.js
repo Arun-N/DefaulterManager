@@ -33,6 +33,7 @@ var users = require('./routes/users');
 var main = require('./routes/mainpage');
 var upload = require('./routes/upload');
 var sreg = require('./routes/register');
+var help = require('./routes/help');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -57,6 +58,7 @@ app.use('/users', users);
 app.use('/homepage', main);
 app.use('/upload', upload);
 app.use('/registration', sreg);
+app.use('/help', help);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

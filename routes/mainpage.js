@@ -16,6 +16,10 @@ router.get('/download', function(req, res){
     //res.end();   automatically called by res.download()
 });
 
+router.get('/2', function (req, res) {
+    res.send("second page");
+});
+
 router.get('/logout', function (req, res) {
     res.redirect('/');
 });

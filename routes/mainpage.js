@@ -17,7 +17,7 @@ router.get('/download', function(req, res){
 });
 
 router.get('/2', function (req, res) {
-    res.send("second page");
+    res.render('sampleExcel');
 });
 
 router.get('/logout', function (req, res) {

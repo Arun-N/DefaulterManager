@@ -1,0 +1,298 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,body {
+    width: 100%;
+    height: 100%;
+}
+
+.nav {
+    width: 100%;
+    height: 10%;
+    background: #15131d;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 7px 30px 3px rgba(0,0,0,0.69);
+}
+
+.nav ul {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+}
+
+.nav ul li {
+    display: inline-block;
+    left: 0;
+    width: 25%;
+    height: 90%;
+    color: #9b9b9b;
+    text-align: center;
+    line-height: 4;
+    font-size: 16px;
+    font-weight: 200;
+    font-family: sans-serif;
+}
+
+.nav ul li i {
+    font-size: 30px;
+    font-weight: 100;
+}
+
+.nav ul li.logout {
+    position: relative;
+    float: right;
+    width: 10%;
+    height: 90%;
+    color: #9b9b9b;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #9f9f9f;
+}
+
+.nav ul li a:hover {
+    color: #eeeeee;
+}
+
+.container {
+    width: 100%;
+    height: 90%;
+    background: #ffffff;
+}
+
+.container .menu-bar {
+    position: fixed;
+    top: 0;
+    width: 12%;
+    height: 100%;
+    background: #252233;  
+}
+
+.container .menu-bar ul {
+    position: relative;
+    width: 100%;
+    height: 90%;
+    top: 10%;
+}
+
+.container .menu-bar ul li {
+    display: block;
+    color: #9b9b9b;
+    height: 20%;
+    margin-bottom: 0%;
+    padding:0 0.8em;
+    padding-top: 1.8em;
+    text-align: center;
+    border-bottom: 1px solid #1c1a1a;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.container .menu-bar ul li i {
+    font-size: 40px;
+    font-weight: 100;
+}
+
+.container .menu-bar ul li:hover {
+    color: #eeeeee;
+    background: #1a1824;
+    cursor: pointer;
+}
+
+.container .menu-bar a {
+    color: #9b9b9b;
+    text-decoration: none;
+}
+
+
+/*****************************************************/
+
+.container .content {
+    position: absolute;
+    top: 10%;
+    left: 12%;
+    background: #dddddd;
+    width: 88%;
+    height: 90%;
+    overflow: auto;
+}
+
+.container .content .heading {
+    position: relative;
+    width: 80%;
+    top: 6%;
+    left: 8%;
+    padding: 0.4em 0.2em;
+    font-family: serif;
+    font-size: 2.25em;
+    font-weight: 500;
+    color: #383838;
+    border-bottom: 1px solid #9b9b9b;
+}
+
+.container .content .label {
+    width: 60%;
+    height: 10%;
+    margin: 0 auto;
+    position: relative;
+    top: 15%;
+    animation: fade 0.8s ease;
+}
+
+.container .content .label input {
+    width: 20%;
+    float: left;
+    margin-right: 5%;
+    padding: 1.2em 0.3em;
+    background: #bfbfbf;
+    border: none;
+}
+
+/***********************************/
+
+.container .content .main-file {
+    position: relative;
+    margin: 0 auto;
+    width: 60%;
+    height: 8%;
+    top: 22%;
+    animation: fade 1.2s ease;
+}
+
+/*.container .content .main-file input {
+    width: 20%;
+    padding: 1.2em 0.3em;
+    border-radius: 50px;
+    background: teal;
+    border: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.54);
+    transition: all 0.6s ease;
+}*/
+
+.container .content .main-file input:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.34),0 17px 50px 0 rgba(0,0,0,0.29);
+}
+
+.container .content .main-file p {
+    width: 68%;
+    height: 35%;
+    position: absolute;
+    top: 8%;
+    left: 25%;
+    padding: 0.8em 0.4em;
+    overflow: auto;
+    color: #464646;
+    border-bottom: 1px solid #888888;
+}
+
+/******************************************/
+
+.container .content .main-file-label {
+    width: 60%;
+    height: 10%;
+    margin: 0 auto;
+    position: relative;
+    top: 35%;
+    animation: fade 1.5s ease;
+}
+
+.container .content .main-file-label input {
+    width: 20%;
+    margin-right: 1.5%;
+    margin-left: 1%;
+    padding: 1.2em 0.3em;
+    background: transparent;
+    border: 1px solid #747474;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container .content .btn {
+    position: relative;
+    top: 43%;
+    width: 16%;
+    height: 10%;
+    margin: 0 auto;
+}
+
+.container .content .btn input {
+    position: absolute;
+    width: 100%;
+    padding: 1.2em 0.5em;
+    text-align: center;
+    background: #005050;
+    color: #dddddd;
+    border: none;
+    font-size: 1em;
+    border-radius: 50px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.54);
+    transition: all 0.4s ease;
+}
+
+.container .content .btn input:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.54),0 17px 50px 0 rgba(0,0,0,0.49);
+    background: #003333;
+    color: #ffffff;
+}
+
+.shitty-input-file{
+    top: 50%;
+    left: 50%;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+input[type="button"]:focus {
+    outline: none;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+        transform: translateX(80%);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+/*
+
+input[type="button"]:hover {
+    background: #252233;
+}
+
+input[type="button"]:focus {
+    outline: none;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+

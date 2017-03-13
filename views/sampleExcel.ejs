@@ -36,9 +36,6 @@
             }
         </style>
 
-
-
-
         <script type="text/javascript">
             ! function(e) {
                 var t = function(t, n) {
@@ -106,10 +103,6 @@
 
         </script>
 
-
-
-
-
     </head>
     <body>
         <%include tpl/menu.ejs%>
@@ -131,43 +124,85 @@
                         encType="multipart/form-data"
                 >
                     <div class="main-file-label" style="margin-top: 10%">
-                        <input type="text" name="rollNo" placeholder="Enter Roll No. Column">
-                        <input type="text" name="emailID" placeholder="Enter Email ID Column">
-                        <input type="text" name="mobileNo" placeholder="Enter Mobile No. Column">
-                        <input type="text" name="attendance" placeholder="Enter Attendance Column">
+                        <input type="text" name="rollNo" id="roll" placeholder="Enter Roll No. Column" required>
+                        <input type="text" name="emailID" id="email" placeholder="Enter Email ID Column" required>
+                        <input type="text" name="mobileNo" id="mobile" placeholder="Enter Mobile No. Column" required>
+                        <input type="text" name="attendance" id="attendance" placeholder="Enter Attendance Column" required>
                     </div>
                     <!--class="mainfile"-->
                     <div style="display: none">
                         <div class="fileupload fileupload-new" data-provides="fileupload">
                                                 <span class="btn btn-primary btn-file"><span class="fileupload-new">Select file</span>
                                                 <span class="fileupload-exists">Change</span>
-                                                    <input type="file" name="SampleFile" id="SampleFile"/></span>
+                                                    <input type="file" name="SampleFile" id="SampleFile" required/></span>
+                            <span class="fileupload-preview"></span>
+                            <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+                        </div>
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <span class="btn btn-primary btn-file"><span class="fileupload-new">Select file</span>
+                                                <span class="fileupload-exists">Change</span>
+                                                    <input type="file" name="TemplateFile" id="TemplateFile" required/></span>
                             <span class="fileupload-preview"></span>
                             <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
                         </div>
                     </div>
-                    <div class="btn" style="margin-top: 10%">
-                        <input type="button" value="Select Excel File..." onclick="document.getElementById('SampleFile').click();" />
+                    <div class="btn" style="margin-left: 5%; margin-top: 10%">
+                        <input id="template" type="button" value="Select Template File..." onclick="document.getElementById('TemplateFile').click();" />
                     </div>
-                    <div class="btn" style="margin-top: 17%">
+                    <div class="btn" style="margin-left: 40%; margin-top: 10%">
+                        <input id="defaulter" type="button" value="Select Defaulter File..." onclick="document.getElementById('SampleFile').click();" />
+                    </div>
+                    <div class="btn" style="margin-left: 80%; margin-top: 10%">
                         <input type="button" id="save-btn" value="Proceed"/>
                     </div>
                 </form>
             </div>
         </div>
         <script type="text/javascript">
+
+            function isEmpty( el ){
+                console.log("val = " + $.trim(el.html()));
+                return $.trim(el.html());
+            }
+            
+            $("#TemplateFile").change(function () {
+                var file = $('#TemplateFile').val();
+                if (file){
+                    $("#template").value = file;
+                }
+                else {
+                    console.log("No val");
+                }
+            });
+
+            $("#SampleFile").change(function () {
+                var file = $('#SampleFile').val();
+                if (file){
+                    $("#defaulter").value = file;
+                }
+                else {
+                    console.log("No val");
+                }
+            });
+
             $("#save-btn").click(function () {
-                $.ajax({
-                    type: "POST",
-                    url: 'http://localhost:3000/upload',
-                    data: new FormData(document.forms.uploadForm),
-                    success: function (data) {
-                        window.alert("success");
-                    },
-                    contentType: false,
-                    cache: false,
-                    processData:false
-                });
+
+                if (isEmpty($('#roll')) && isEmpty($('#email')) && isEmpty($('#mobile')) && isEmpty($('#attendance'))) {
+                    $.ajax({
+                        type: "POST",
+                        url: 'http://localhost:3000/upload',
+                        data: new FormData(document.forms.uploadForm),
+                        success: function (data) {
+                            window.alert("success");
+                        },
+                        contentType: false,
+                        cache: false,
+                        processData:false
+                    });
+                }
+                else {
+                    window.alert("Please fill all the fields");
+                }
             })
         </script>
     </body>

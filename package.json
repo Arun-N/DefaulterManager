@@ -16,10 +16,12 @@
     "express": "~4.14.0",
     "express-fileupload": "0.0.7",
     "express-session": "^1.15.0",
+    "express-sessions": "^1.0.6",
     "mime": "latest",
     "mongo-connect": "0.0.6",
     "morgan": "~1.7.0",
     "mysql": "^2.13.0",
+    "node-gyp": "^3.5.0",
     "node-msoffice-pdf": "latest",
     "serve-favicon": "~2.3.0"
   }

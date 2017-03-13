@@ -1,14 +1,14 @@
 var express = require('express');
-var router = express.Router();
 var app = express();
 var crypto = require('crypto');
 const secret = "ridethebull";
+var cookieParser = require('cookie-parser');
 
 var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 /* GET home page. */
 app.get('/', function(req, res, next) {
@@ -22,31 +22,48 @@ app.post('/validate', function (req, res) {
     var pwdH = crypto.createHmac('sha256', secret).update(pwd).digest('hex');
 
     var db = req.con;
-    db.query("SELECT password FROM users WHERE username='" + uname + "'", function (err, rows) {
-        if(err){console.log(err)}
-        else {
-            //console.log(rows[0]);
-            if(rows[0] == undefined){
-                console.log("Incorrect user name!");
-                //res.writeHead(200, {"Content-Type":"text/plain"});
-                //res.end("wrong_username");
-                res.redirect('/');
-            }
+    if(req.session.uname && req.session.uname != uname){
+        setTimeout(function () {
+            res.redirect('/');
+        }, 5000);
+        //res.send("You are already logged in with another account. Please log out of that account first.\nRedirecting in 5 sec...");
+
+    }else{
+        db.query("SELECT password FROM users WHERE username='" + uname + "'", function (err, rows) {
+            if(err){console.log(err)}
             else {
-                var pwdH2 = rows[0].password;
-                if(pwdH == pwdH2){
-                    console.log("Correct");
-                    res.redirect('homepage');
+                //console.log(rows[0]);
+                if(rows[0] == undefined){
+                    console.log("Incorrect user name!");
+                    //res.writeHead(200, {"Content-Type":"text/plain"});
+                    //res.end("wrong_username");
+                    res.redirect('/');
                 }
                 else {
-                    console.log("password incorrect");
-                    res.redirect('/');
-                    //res.writeHead(200, {"Content-Type":"text/plain"});
-                    //res.end("wrong_password");
+                    var pwdH2 = rows[0].password;
+                    if(pwdH == pwdH2){
+                        console.log("Correct");
+                        //var cookie = req.cookies.userinfo;
+                        if(!req.session.uname){
+                            console.log("cookie not set");
+                            req.session.uname = uname;
+                            console.log("Cookie created!");
+                        }
+                        else {
+                            console.log("Cookie and session exists");
+                        }
+                        res.redirect('homepage');
+                    }
+                    else {
+                        console.log("password incorrect");
+                        res.redirect('/');
+                        //res.writeHead(200, {"Content-Type":"text/plain"});
+                        //res.end("wrong_password");
+                    }
                 }
             }
-        }
-    });
+        });
+    }
 
 });
 
